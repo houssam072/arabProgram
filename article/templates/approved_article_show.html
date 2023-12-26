@@ -1,0 +1,45 @@
+{% extends 'layout/pagearticle.html' %} 
+
+{% load static %}
+
+{% block content %} 
+
+    
+<div class = bread_container>
+
+            
+    {% for post in article %}
+
+    <ul class="breadcrumb">
+      <li><a href="#">{{post.title}}</a></li>
+      <li><a href="{% url 'approved_article' %}">مراجعة</a></li>
+      <li><a href="/">الرئيسية</a></li>
+    </ul>
+    </div>
+    <div class="quest">
+      
+      <a href="{% url 'user_quest' %}" class="gray_background"><bdi>الذهاب الى مقالاتي</bdi></a>
+      <a href="{% url 'add_article' %}"><bdi><span class="pluse">+ </span>اضافة مقال</bdi></a>
+    </div>
+
+
+  <div class="container main_box">
+    
+        <div class="article_show">
+            <h2>{{post.title}}</h2>
+            <p>{{post.bio}}</p>
+            <h4>{{post.body|safe}}</h4>
+
+            {% endfor %}
+        </div>
+
+
+
+
+</div>  
+
+
+
+
+
+{% endblock %}

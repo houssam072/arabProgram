@@ -1,0 +1,46 @@
+{% extends 'layout/pagearticle.html' %} 
+
+{% load static %}
+
+{% block content %} 
+
+
+
+    
+<div class = bread_container>
+
+
+    <ul class="breadcrumb">
+      <li><a href="#">المقالات البرمجية</a></li>
+      <li><a href="/">الرئيسية</a></li>
+    </ul>
+    </div>
+    <div class="quest">
+      
+      <a href="{% url 'user_article' %}" class="gray_background"><bdi>الذهاب الى مقالاتي</bdi></a>
+      <a href="{% url 'add_article' %}"><bdi><span class="pluse">+ </span>اضافة مقال</bdi></a>
+    </div>
+
+
+  <div class="container main_box">
+    {% for post in articles %}
+    
+        <div class="article_box">
+            <h2><a href="{% url 'article_show' post.id%}">{{post.title}}</a></h2>
+            <p>{{post.bio}}</p>
+            <div class="common_tag">
+                {% for tag in post.tags.all %}
+                <span>{{tag.name}}</span>
+                
+                {% endfor %}
+
+            </div>
+        </div>
+
+    {% endfor %}
+</div>  
+
+
+    </body>
+
+{% endblock %}

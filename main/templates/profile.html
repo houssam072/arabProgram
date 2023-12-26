@@ -1,0 +1,21 @@
+{% extends 'layout/page.html' %} 
+{% block content %}
+{% load static %}
+
+    
+        <h1 class="title">الملف الشخصي</h1>
+        <div>
+            <div class="main-info">
+                <img class="image_profile" src="{{user.profile.profile_pic.url}}" alt="">
+                <div class="info">
+                    <p class="normal_font">{{profile.user.username}}</p>
+                    <p class="normal_font">{{profile.user.email}}</p>
+                </div>
+                <button class="editBtn"><a href="{% url 'profile_edit' %}">تعديل</a></button>
+            </div>
+            
+        </div>
+
+
+
+{% endblock %}

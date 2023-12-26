@@ -1,0 +1,73 @@
+{% extends 'layout/pagearticle.html' %} 
+{% load static %}
+
+
+{% block content %} 
+
+
+
+<div class="approved_article">
+    <h1 class="title"><bdi> مراجعة جديد</bdi></h1> 
+
+        
+    <div class="items_approved">
+    {% for post in articles %}
+        <div class="item_approved">
+            
+            <div class="approved_field">
+                <label for="{{form.title.id_for_label}}">االعنوان:</label>
+                <p><a href="{%url 'approved_article_show' post.id%}">{{post.title}}</a></p>
+            </div>
+
+            <div class="approved_field">
+                <label for="{{form.body.id_for_label}}">نبذة مختصرة عن المقال:</label>
+                <p>{{post.bio}}</p>
+            </div>
+            <div class="approved_field">
+                <label for="{{form.body.id_for_label}}">الكاتب  :</label>
+                <p>{{post.auther}}</p>
+            </div>
+
+            
+                
+    <form method="POST" action="" enctype="multipart/form-data" class="approved_article_form">
+        {% csrf_token %}
+            <div class="approved_field">
+                <label for="{{form.body.id_for_label}}"><bdi> نشر:</bdi></label>
+                    <input type="checkbox" value={{post.id}} name="boxes" id="">
+            </div>
+
+            <div class="approved_field">
+                <label for="{{form.body.id_for_label}}"><bdi> ملاحظة:</bdi></label>
+                {{form.message_body}}
+            </div>
+
+            <div class="approved_field">
+                <a class="delete_btn" href="{% url 'delete_article' pk=post.id %}"><bdi>حذف المقالة</bdi></a>
+    
+            </div>
+            
+
+            <input type="submit" value="نشر " class="move_btn">
+    </form>
+
+
+
+        </div>
+            
+        
+    {% endfor %}
+    </div>
+
+
+
+    
+
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% autoescape  off %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/mainstyle.css' %}?{% now 'U' %}">
+
+<section class="header-sec">
+    <div class="logo">
+        <a href="{% url 'main' %}">
+            <h1 class="font_family"><span class="maincolor">Arabic</span> Coder</h1></a>
+    </div>
+    <div class="headerContent">
+
+
+        <ul class="list_nav">
+            {% if user.is_authenticated %}
+                <li><input type="search" placeholder="ابحث" name="" id=""></li>
+                <li ><a class="normal_font" href="{% url 'profile' %}">{{user.username}}</a></li>
+                <li><a href="{% url 'logout' %}"><bdi> تسجيل الخروج</bdi></a></li>
+                <li><a href="{% url 'aboutus' %}"><bdi>من نحن؟</bdi></a></li>
+                
+                {% if user.is_superuser %}
+                <li><a href="{% url 'approved_article' %}"><bdi>مراجعة</bdi></a></li>
+                {% else %}
+                <li><a href="{% url 'warn_message' %}" id="warn-btn"><bdi>ملاحظات</bdi></a></li>
+                {% endif %}
+            {% else %}
+                <li><input type="search" placeholder="ابحث" name="" id=""></li>
+                <li><a href="{% url 'register' %}"><bdi>انشاء حساب</bdi></a></li>
+                <li><a href="{% url 'login' %}"><bdi>تسجيل دخول </bdi></a></li>
+                <li><a href="{% url 'aboutus' %}"><bdi>من نحن؟</bdi></a></li>
+            {% endif %}
+           
+            
+        </ul>
+        
+
+    </div>
+
+    <div>
+        <ul  class="menu">
+            <li><a href="{% url 'index' %}">الأسئلة البرمجية</a></li>
+            <li><a href="{% url 'article_page' %}">المقالات البرمجية</a></li>
+        </ul>
+        <div class="icons">
+            <div class="fa fa-bars" id="menu-btn"></div>
+        </div>
+    </div>
+    
+
+</section>
+<script src="{% static 'js/script.js' %}?{% now 'U' %}" type="text/javascript"></script>
+{% endautoescape  %}

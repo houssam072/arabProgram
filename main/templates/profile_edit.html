@@ -1,0 +1,23 @@
+{% extends 'layout/page.html' %} 
+
+{% load bootstrap4 %}
+{% block content %}
+{% load static %}
+
+    <div class="page register-page">
+        <h1 class="title">تعديل معلومات الحساب</h1> 
+        
+
+        <form method="POST" enctype="multipart/form-data" class="was-validated">
+            {% csrf_token %}
+            {% bootstrap_form userform %}
+            {% bootstrap_form profileform %}
+            {% buttons %}
+                
+                <button class="submit-button" type="submit">حفظ</button>
+            {% endbuttons %}
+        </form>
+
+        
+
+{% endblock %}

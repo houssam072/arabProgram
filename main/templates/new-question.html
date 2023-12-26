@@ -1,0 +1,32 @@
+{% extends 'layout/page.html' %} 
+{% block content %}
+    <div class="page new-qiestion-page">
+        <h1 class="title"><bdi> سؤال جديد</bdi></h1> 
+        <form method="POST" enctype="multipart/form-data" class="new-qiestion-form">
+            {% csrf_token %}
+            <div class="fieldWraber">
+                <label for="{{form.title.id_for_label}}">Title:</label>
+                {{form.title}}
+                <span class="error">{{form.email.errors}}</span>
+            </div>
+
+            <div class="fieldWraber">
+                <label for="{{form.body.id_for_label}}">Body:</label>
+                {{form.body}}
+                <span class="error">{{form.username.errors}}</span>
+            </div>
+
+            
+            <div class="fieldWraber">
+                <label for="{{form.body.id_for_label}}"><bdi>اضافة مرفق:</bdi></label>
+                {{form.attach}}
+                <span class="error">{{form.username.errors}}</span>
+            </div>
+
+
+
+            <input type="submit" value="Submit" class="submit-button">
+
+        </form>
+
+{% endblock %}

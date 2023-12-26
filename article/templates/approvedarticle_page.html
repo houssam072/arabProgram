@@ -1,0 +1,19 @@
+{% extends 'layout/pagearticle.html' %} 
+{% load static %}
+
+
+{% block content %} 
+
+<div class="container">
+    <div class="msg_art">
+    <div class="msg">
+        <h1><bdi>نشكر لك مبادرتك في اثراء المحتوى العربي البرمجي!</bdi></h1>
+        <p><bdi>المقالة قيد المراجعة من قبل ادارة الموقع للتأكد من سلامة محتوى هذه المقالة.</bdi></p>
+        <p><bdi>نرجو منك الانتظار.</bdi></p>
+    </div>
+<a class="move_btn" href="{% url 'index' %}">الانتقال الى الصفحة الرئيسية</a>
+</div>
+</div>
+
+
+{% endblock %}

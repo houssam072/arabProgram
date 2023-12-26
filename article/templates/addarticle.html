@@ -1,0 +1,49 @@
+{% extends 'layout/pagearticle.html' %} 
+{% load static %}
+
+
+{% block content %} 
+
+
+
+<div class="new_article_page">
+    <h1 class="title"><bdi> مقال جديد</bdi></h1> 
+    <form method="POST" action="" enctype="multipart/form-data" class="new_article_form">
+        {% csrf_token %}
+        <div class="fieldWraber">
+            <label for="{{form.title.id_for_label}}">االعنوان:</label>
+            {{post.title}}
+        </div>
+
+        <div class="fieldWraber">
+            <label for="{{form.body.id_for_label}}">نبذة مختصرة عن المقال:</label>
+            {{post.bio}}
+        </div>
+
+        
+        <div class="fieldWraber">
+            <label for="{{form.body.id_for_label}}"><bdi> كلمات دليلة:</bdi></label>
+            {{post.tags}}
+            
+        </div>
+
+        
+        <div class="fieldWraber">
+            <label for="{{form.body.id_for_label}}"><bdi> المحتوى:</bdi></label>
+            {{post.body}}
+            {{post.media}}
+        </div>
+
+
+
+        <input type="submit" value="نشر المقال" class="submit_button">
+
+    </form>
+</div>
+
+
+
+
+
+
+{% endblock %}

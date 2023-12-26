@@ -1,0 +1,33 @@
+{% extends 'layout/pagearticle.html' %} 
+
+{% load static %}
+
+{% block content %} 
+
+
+
+
+        {% for post in user_article %}
+        <div class="article_box">
+        <h1>ملاحظاتي</h1>
+            <p>{{post.message_body}} {{post.title}} بنجاح</p>
+
+                            
+    <form method="POST" action="" enctype="multipart/form-data" class="approved_article_form">
+        {% csrf_token %}
+            <div class="approved_field">
+                    <input type="checkbox" value={{post.id}} name="boxes" id="">
+                    <bdi style="color: black;"> مشاهدة:</bdi>
+            </div>
+
+            
+
+            <input type="submit" value="تم " class="show_btn">
+    </form>
+        </div>
+
+        
+        {% endfor %}
+
+
+{% endblock %}

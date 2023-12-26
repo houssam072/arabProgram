@@ -1,0 +1,105 @@
+{% extends 'layout/page.html' %} {% block content %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ul.breadcrumb {
+  padding: 10px 16px;
+list-style: none;
+background-color: none;
+position: absolute;
+top: 84px;
+right: 0;
+
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+  margin: 0;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "<\00a0";
+}
+ul.breadcrumb li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+.bread_container{
+display:flex;}
+
+.quest{
+  position: absolute;
+  top: 110px;
+  left: 12px;
+}
+.quest a{
+  background-color: #ffffff;
+  padding: 10px 12px;
+  border-radius: 15px;
+  border: 1px solid #000;
+}
+
+.quest a:hover{
+  background-color: rgb(98, 133, 87);
+  color: white;
+}
+.pluse{
+  font-size: 25px;
+}
+</style>
+</head>
+<body>
+<div class = bread_container>
+
+
+<ul class="breadcrumb">
+  <li><a href="{% url 'new-question' %}">اسأل سؤالاً</a></li>
+  <li><a href="{% url 'index' %}">الرئيسية</a></li>
+</ul>
+</div>
+<div class="quest">
+  
+  <a href="{% url 'new-question' %}"><bdi><span class="pluse">+ </span>اضافة سؤال</bdi></a>
+</div>
+</body>
+</html>
+
+
+
+<h1 class="title">All the Question</h1>
+<div class="page-quest">
+    
+    <div class="container">    
+    {% for question in user_quest %}
+    
+        <div class="card">
+        <div class="imgBox">
+            <img src="{% static 'image/pexels-leeloo-thefirst-5428836.jpg' %}" width="100px" height="100px" alt="" />
+            
+            <h2 style="text-align:right"><bdi>{{question.title}}</bdi></h2>
+        </div>
+        <!-- ./image box-->
+        <div class="content">
+            
+            <a href="{% url 'question' question.id %}">
+                <h2 style="text-align:right"><bdi>{{question.title}}</bdi></h2>
+                <p class="question-list-item-auther">By: {{question.auther.username}}</p>
+            </a>
+        </div><!-- ./ content-->
+        </div><!-- ./card-->
+    
+    {% endfor %}
+    </div><!-- ./container-->
+</div><!-- ./page -->
+
+{% endblock %}
